@@ -1,0 +1,56 @@
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+/* Wrapper para el sidebar */
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -220px;
+}
+
+#sidebar-wrapper {
+    min-width: 220px;
+}
+
+.container-fluid {
+    padding: 20px;
+}
+
+.card {
+    border-radius: 6px;
+}
+
+/* Responsive: ocultar sidebar en pantallas pequeñas */
+@media (max-width: 767.98px) {
+    #sidebar-wrapper {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        margin-left: -260px; /* oculto por defecto */
+        z-index: 1040;
+        transition: margin 0.3s ease;
+        width: 220px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        margin-left: 0;
+    }
+}
+
+/* Overlay para cuando el sidebar está abierto en móviles */
+#sidebarOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1030;
+}

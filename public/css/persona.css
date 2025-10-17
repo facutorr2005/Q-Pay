@@ -1,0 +1,20 @@
+.text-h1{
+   color: grey
+}
+
+/* Estilos específicos para la vista Personas */
+.table-responsive {
+   background: #fff;
+   padding: 12px;
+   border-radius: 6px;
+}
+
+.table th, .table td {
+   vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+   .table-responsive {
+      padding: 6px;
+   }
+}

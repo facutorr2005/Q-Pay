@@ -1,0 +1,7 @@
+CREATE TABLE Usuarios (
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    Email VARCHAR(250) NULL,
+    Password VARCHAR(250) NULL,
+    Nombre VARCHAR(250) NULL,
+    Rol VARCHAR(250) NULL
+);
