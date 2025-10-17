@@ -21,10 +21,9 @@ class AuthController {
 
         $usuario = $this->model->obtenerPorEmail($email);
 
-        if ($usuario && $this->model->verificarPassword($password, $usuario->Password)) {
+        if ($usuario && $usuario->Contrasena == $password) {
             $_SESSION['usuario_id'] = $usuario->Id;
-            $_SESSION['nombre'] = $usuario->Nombre;
-            $_SESSION['rol'] = $usuario->Rol;
+            $_SESSION['email'] = $usuario->Email;
             
             header('Location: ' . BASE_URL . '/personas');
             exit;
