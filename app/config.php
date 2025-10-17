@@ -1,12 +1,12 @@
 <?php
 // URL Base de la aplicación
-define('BASE_URL', '/php-mvc-isei-2025/public');
+define('BASE_URL', '/Q-Pay/public');
 
 // Configuración de la base de datos
-define('DB_HOST', 'localhost');
+define('DB_HOST', '192.168.100.206');
 define('DB_NAME', 'prueba');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'alumno');
+define('DB_PASS', 'alumno');
 
 // Configuración SMTP
 define('SMTP_HOST', '---');

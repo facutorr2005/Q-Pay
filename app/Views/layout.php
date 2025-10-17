@@ -37,8 +37,8 @@
 
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <?php if (isset($_SESSION['nombre'])): ?>
-                            <li class="nav-item"><span class="nav-link">Hola, <?php echo htmlspecialchars($_SESSION['nombre']); ?></span></li>
+                        <?php if (isset($_SESSION['email'])): ?>
+                            <li class="nav-item"><span class="nav-link">Hola, <?php echo htmlspecialchars($_SESSION['email']); ?></span></li>
                             <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>/logout">Cerrar sesión</a></li>
                         <?php else: ?>
                             <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>/login">Iniciar sesión</a></li>

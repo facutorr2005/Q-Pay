@@ -1,30 +1,25 @@
 <?php
 namespace App\Models;
 
+use App\Database\Database;
+
 class UsuarioModel {
+    private const NOMBRE_CLASE = UsuarioModel::class;
+
     public $Id;
     public $Email;
-    public $Password;
-    public $Nombre;
-    public $Rol;
+    public $Contrasena;
 
-    // Contraseña de prueba: 123456
-    private const PASSWORD_HASH = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+    protected $db;
+
+    public function __construct() {
+        $this->db = Database::getInstance()->getConnection();
+    }
     
     public function obtenerPorEmail($email) {
-        // Crear un usuario de prueba
-        $usuario = new UsuarioModel();
-        $usuario->Id = 1;
-        $usuario->Email = $email; // Usa el email proporcionado
-        $usuario->Password = self::PASSWORD_HASH;
-        $usuario->Nombre = 'Usuario de Prueba';
-        $usuario->Rol = 'admin';
-        
-        return $usuario;
-    }
-
-    public function verificarPassword($password, $hash) {
-        return $password === '123456';
+        $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE Email = :email");
+        $stmt->execute(['email' => $email]);
+        return $stmt->fetchObject(self::NOMBRE_CLASE);
     }
 
     public function registrar($data) {
