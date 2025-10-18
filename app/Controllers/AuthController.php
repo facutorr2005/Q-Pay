@@ -39,4 +39,31 @@ class AuthController {
         header('Location: ' . BASE_URL . '/auth/login');
         exit;
     }
+
+    public function registro() {
+        $title = 'Registro';
+        require '../app/Views/Auth/registro.php';        
+    }
+
+    public function registroPost() {
+        
+        $password = $_POST['contrasena'] ?? '';
+        $password2 = $_POST['contrasena2'] ?? '';
+
+        if($password == $password2){
+
+            $this->model->agregar($_POST);
+
+            header('Location: ' . BASE_URL . '/personas');
+            exit;
+        }
+
+        $_SESSION['error'] = 'No coinciden contraseñas';
+        header('Location: ' . BASE_URL . '/auth/registro');
+        exit;
+
+
+
+
+    }
 }
