@@ -9,6 +9,9 @@ class UsuarioModel {
     public $Id;
     public $Email;
     public $Contrasena;
+    public $Nombre;
+    public $Apellido;
+    public $DNI;
 
     protected $db;
 
@@ -22,8 +25,15 @@ class UsuarioModel {
         return $stmt->fetchObject(self::NOMBRE_CLASE);
     }
 
-    public function registrar($data) {
-        // Simula registro exitoso
-        return true;
+    public function agregar($data) {
+        $stmt = $this->db->prepare("INSERT INTO usuarios (Email, Contrasena, Nombre, Apellido, DNI) VALUES (:email, :contrasena, :nombre, :apellido, :dni)");
+        return $stmt->execute([
+            
+            'email' => $data['email'],
+            'contrasena' => $data['contrasena'],
+            'nombre' => $data['nombre'],
+            'apellido' => $data['apellido'],
+            'dni' => $data['dni']
+        ]);
     }
 }

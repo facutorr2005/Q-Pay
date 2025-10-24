@@ -30,6 +30,7 @@
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                            <a href="<?php echo BASE_URL; ?>/auth/registro">Registrarse</a>
                         </form>
                     </div>
                 </div>
