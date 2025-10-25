@@ -5,6 +5,7 @@ use App\Models\UsuarioModel;
 
 class AuthController {
     private $model;
+    private $codigoValidacion = '3218';
 
     public function __construct() {
         $this->model = new UsuarioModel();
@@ -62,8 +63,55 @@ class AuthController {
         header('Location: ' . BASE_URL . '/auth/registro');
         exit;
 
-
-
-
     }
+
+    public function recuperoClave() {
+        $title = 'Recupero de Clave';
+        require '../app/Views/Auth/recupero-clave.php';        
+    }
+
+    public function recuperoClavePost() {
+        $email = $_POST['email'] ?? '';
+
+        $usuario = $this->model->obtenerPorEmail($email);
+
+        if ($usuario) {
+            // Aquí iría la lógica para enviar el correo de recuperación con el codigo de verificacion
+            $_SESSION['usuarioId'] = $usuario->Id;
+        }
+
+        header('Location: ' . BASE_URL . '/auth/cambioClave');
+        exit;
+    }
+
+    public function cambioClave() {
+        $title = 'Recupero de Clave';
+        require '../app/Views/Auth/cambio-clave.php';  
+    }
+
+    public function cambioClavePost() {
+        $codigo = $_POST['codigo'] ?? '';
+        $contrasena = $_POST['contrasena'] ?? '';
+        $contrasena2 = $_POST['contrasena2'] ?? '';
+
+        // Aquí iría la lógica para verificar el código y actualizar la contraseña
+        if ($codigo !== $this->codigoValidacion) {
+            $_SESSION['error'] = 'Código de verificación incorrecto.';
+            header('Location: ' . BASE_URL . '/auth/cambioClave');
+            exit;
+        }
+        if ($contrasena === $contrasena2) {
+            // Actualizar la contraseña en la base de datos
+            $usuarioId = $_SESSION['usuarioId'] ?? null;
+            $this->model->modificarClave($usuarioId, $contrasena);
+            unset($_SESSION['usuarioId']); 
+            header('Location: ' . BASE_URL . '/auth/login');
+            exit;
+        } else {
+            $_SESSION['error'] = 'Las contraseñas no coinciden.';
+            header('Location: ' . BASE_URL . '/auth/cambioClave');
+            exit;
+        }
+    }
+
 }

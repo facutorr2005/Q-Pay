@@ -36,4 +36,12 @@ class UsuarioModel {
             'dni' => $data['dni']
         ]);
     }
+
+      public function modificarClave($id, $nuevaContrasena) {
+         $stmt = $this->db->prepare("UPDATE usuarios SET Contrasena = :contrasena WHERE Id = :id");
+         return $stmt->execute([
+             'contrasena' => $nuevaContrasena,
+             'id' => $id
+         ]);
+    }
 }
