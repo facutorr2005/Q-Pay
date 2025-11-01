@@ -21,7 +21,7 @@
     <div class="border-end bg-light" id="sidebar-wrapper" style="min-width:220px;">
         <div class="sidebar-heading border-bottom bg-white py-3 px-3">ISEI - MVC</div>
         <div class="list-group list-group-flush">
-            <a href="<?php echo BASE_URL; ?>/dashboard" class="list-group-item list-group-item-action list-group-item-light p-3">Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>/Panel" class="list-group-item list-group-item-action list-group-item-light p-3">Panel</a>
             <a href="<?php echo BASE_URL; ?>/personas" class="list-group-item list-group-item-action list-group-item-light p-3">Personas</a>
             <a href="<?php echo BASE_URL; ?>/direcciones" class="list-group-item list-group-item-action list-group-item-light p-3">Direcciones</a>
         </div>
