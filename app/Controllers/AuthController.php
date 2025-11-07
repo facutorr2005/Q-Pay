@@ -26,7 +26,7 @@ class AuthController {
             $_SESSION['usuario_id'] = $usuario->Id;
             $_SESSION['email'] = $usuario->Email;
             
-            header('Location: ' . BASE_URL . '/personas');
+            header('Location: ' . BASE_URL . '/Panel');
             exit;
         }
 
@@ -55,7 +55,7 @@ class AuthController {
 
             $this->model->agregar($_POST);
 
-            header('Location: ' . BASE_URL . '/personas');
+            header('Location: ' . BASE_URL . '/Panel');
             exit;
         }
 

@@ -1,0 +1,1 @@
+<a href="<?php echo BASE_URL; ?>/Compras" class="btn btn-primary w-100">Iniciar Compra</a>
