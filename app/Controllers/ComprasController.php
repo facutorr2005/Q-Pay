@@ -26,7 +26,15 @@ class ComprasController {
         if(!isset($_SESSION['productos'])){
             $_SESSION['productos'] = [];
         }
-        $_SESSION['productos'][]= $producto;
+        
+        $_SESSION['productos'][]= json_encode($producto);
+        
+        header('Location: ' . BASE_URL . '/Compras');
+        exit;
+    }
+
+    public function EliminarProducto() {
+        unset($_SESSION['productos'][$_POST['posicion']]);
         header('Location: ' . BASE_URL . '/Compras');
         exit;
     }
