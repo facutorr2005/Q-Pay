@@ -31,4 +31,9 @@
     </div>
     <?php endforeach; ?>
     <div>Total:</div> <?= $Total; ?>
+    <div>
+        <form action="<?php echo BASE_URL; ?>/Compras/Finalizar" method="post">
+        <button class="btn btn-success btn-lg">Finalizar Compra</button>
+        </form>
+    </div>
 <?php endif;?>
